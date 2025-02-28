@@ -1,0 +1,11 @@
+{
+  "Name": "dscott-aro-nsg",
+  "IsCustom": true,
+  "Description": "Custom role for managing ARO network security groups.",
+  "Actions": [
+    "Microsoft.Network/networkSecurityGroups/join/action"
+  ],
+  "AssignableScopes": [
+    "/subscriptions/fe16a035-e540-4ab7-80d9-373fa9a3d6ae"
+  ]
+}

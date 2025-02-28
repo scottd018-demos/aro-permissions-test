@@ -1,0 +1,13 @@
+{
+  "Name": "dscott-aro-natgw",
+  "IsCustom": true,
+  "Description": "Custom role for managing ARO NAT gateways.",
+  "Actions": [
+    "Microsoft.Network/natGateways/join/action",
+    "Microsoft.Network/natGateways/read",
+    "Microsoft.Network/natGateways/write"
+  ],
+  "AssignableScopes": [
+    "/subscriptions/fe16a035-e540-4ab7-80d9-373fa9a3d6ae"
+  ]
+}

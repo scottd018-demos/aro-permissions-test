@@ -1,0 +1,34 @@
+# openshift vars
+OPENSHIFT_VERSION="4.15.35"
+OPENSHIFT_PULL_SECRET='~/.azure/aro-pull-secret.txt'
+
+# azure vars
+SUBSCRIPTION_ID="fe16a035-e540-4ab7-80d9-373fa9a3d6ae"
+CLUSTER_RESOURCE_GROUP="${CLUSTER_NAME}-aro-rg"
+NETWORK_RESOURCE_GROUP="${CLUSTER_NAME}-rg"
+MANAGED_RESOURCE_GROUP="${NETWORK_RESOURCE_GROUP}-managed"
+VNET="${CLUSTER_NAME}-vnet"
+CONTROL_PLANE_SUBNET="${CLUSTER_NAME}-cp-subnet"
+MACHINE_SUBNET="${CLUSTER_NAME}-machine-subnet"
+
+# managed identity vars
+CLUSTER_IDENTITY="${CLUSTER_NAME}-cluster"
+FILE_CSI_DRIVER_IDENTITY="${CLUSTER_NAME}-file-csi-driver"
+CLOUD_CONTROLLER_MANAGER_IDENTITY="${CLUSTER_NAME}-cloud-controller-manager"
+INGRESS_IDENTITY="${CLUSTER_NAME}-ingress"
+IMAGE_REGISTRY_IDENTITY="${CLUSTER_NAME}-image-registry"
+MACHINE_API_IDENTITY="${CLUSTER_NAME}-machine-api"
+CLOUD_NETWORK_CONFIG_IDENTITY="${CLUSTER_NAME}-cloud-network-config"
+ARO_OPERATOR_IDENTITY="${CLUSTER_NAME}-aro-service"
+DISK_CSI_DRIVER_IDENTITY="${CLUSTER_NAME}-disk-csi-driver"
+
+MANAGED_IDENTITY_FLAGS="--enable-managed-identity 
+    --assign-cluster-identity $CLUSTER_IDENTITY
+    --assign-platform-workload-identity file-csi-driver $FILE_CSI_DRIVER_IDENTITY
+    --assign-platform-workload-identity cloud-controller-manager $CLOUD_CONTROLLER_MANAGER_IDENTITY
+    --assign-platform-workload-identity ingress $INGRESS_IDENTITY
+    --assign-platform-workload-identity image-registry $IMAGE_REGISTRY_IDENTITY
+    --assign-platform-workload-identity machine-api $MACHINE_API_IDENTITY
+    --assign-platform-workload-identity cloud-network-config $CLOUD_NETWORK_CONFIG_IDENTITY
+    --assign-platform-workload-identity aro-operator $ARO_OPERATOR_IDENTITY
+    --assign-platform-workload-identity disk-csi-driver $DISK_CSI_DRIVER_IDENTITY"
