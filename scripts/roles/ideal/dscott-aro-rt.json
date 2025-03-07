@@ -1,0 +1,12 @@
+{
+  "Name": "dscott-aro-rt",
+  "IsCustom": true,
+  "Description": "Custom role for managing ARO route tables.",
+  "Actions": [
+    "Microsoft.Network/routeTables/join/action",
+    "Microsoft.Network/routeTables/read"
+  ],
+  "AssignableScopes": [
+    "/subscriptions/fe16a035-e540-4ab7-80d9-373fa9a3d6ae"
+  ]
+}
