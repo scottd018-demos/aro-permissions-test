@@ -42,11 +42,13 @@ module "aro_permissions" {
   network_security_group = var.byo_nsg ? azurerm_network_security_group.aro[0].name : null
 
   aro_resource_group = {
-    name   = azurerm_resource_group.aro.name
+    name   = azurerm_resource_group.main.name
     create = false
   }
 
-  # service principals
+  # service principals / managed identity
+  enable_managed_identities = var.miwi
+
   cluster_service_principal = {
     name   = null
     create = !var.miwi
@@ -57,7 +59,8 @@ module "aro_permissions" {
     name   = null
     create = true
   }
-  enable_managed_identities = true
+
+  resource_provider_service_principal_name = "aro-v4-fp-shared-dev"
 
   # set custom permissions
   nat_gateways = var.outbound_type == "UserDefinedRouting" ? [azurerm_nat_gateway.aro[0].name] : []
@@ -73,16 +76,16 @@ module "aro_permissions" {
   # TODO: also ensure this gets moved below apply_vnet_policy for consistency in 
   #       ordering of code.
   #
-  apply_network_policies_to_all = true
-  apply_subnet_policy           = true
+  apply_network_policies_to_all = false
+  apply_subnet_policy           = false
   managed_resource_group        = "${azurerm_resource_group.main.name}-managed"
-  apply_vnet_policy             = true
-  apply_route_table_policy      = true
-  apply_nat_gateway_policy      = true
-  apply_nsg_policy              = var.byo_nsg
+  apply_vnet_policy             = false
+  apply_route_table_policy      = false
+  apply_nat_gateway_policy      = false
+  apply_nsg_policy              = false
   apply_dns_policy              = false
-  apply_private_dns_policy      = !var.private
-  apply_public_ip_policy        = var.private
+  apply_private_dns_policy      = false
+  apply_public_ip_policy        = false
 
   # explicitly set location, subscription id and tenant id
   location        = var.location

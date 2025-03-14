@@ -1,6 +1,9 @@
-locals {
-  subscription_id = "fe16a035-e540-4ab7-80d9-373fa9a3d6ae"
-  tenant_id       = "64dc69e4-d083-49fc-9569-ebece1dd1408"
+variable "subscription_id" {
+  default = "fe16a035-e540-4ab7-80d9-373fa9a3d6ae"
+}
+
+variable "tenant_id" {
+  default = "64dc69e4-d083-49fc-9569-ebece1dd1408"
 }
 
 # test 1: miwi-private-cli
@@ -18,8 +21,8 @@ module "miwi_private_cli" {
   outbound_type   = "UserDefinedRouting"
   byo_nsg         = true
   miwi            = true
-  subscription_id = local.subscription_id
-  tenant_id       = local.tenant_id
+  subscription_id = var.subscription_id
+  tenant_id       = var.tenant_id
   private         = true
 }
 
@@ -38,8 +41,8 @@ module "miwi_public_cli" {
   outbound_type   = "Loadbalancer"
   byo_nsg         = false
   miwi            = true
-  subscription_id = local.subscription_id
-  tenant_id       = local.tenant_id
+  subscription_id = var.subscription_id
+  tenant_id       = var.tenant_id
 }
 
 # test 3: miwi-private-api
@@ -57,8 +60,8 @@ module "miwi_private_api" {
   outbound_type   = "Loadbalancer"
   byo_nsg         = true
   miwi            = true
-  subscription_id = local.subscription_id
-  tenant_id       = local.tenant_id
+  subscription_id = var.subscription_id
+  tenant_id       = var.tenant_id
   private         = true
 }
 
@@ -77,8 +80,8 @@ module "miwi_public_api" {
   outbound_type   = "UserDefinedRouting"
   byo_nsg         = false
   miwi            = true
-  subscription_id = local.subscription_id
-  tenant_id       = local.tenant_id
+  subscription_id = var.subscription_id
+  tenant_id       = var.tenant_id
 }
 
 # test 5: sp-private-cli
@@ -96,8 +99,8 @@ module "sp_private_cli" {
   outbound_type   = "Loadbalancer"
   byo_nsg         = false
   miwi            = false
-  subscription_id = local.subscription_id
-  tenant_id       = local.tenant_id
+  subscription_id = var.subscription_id
+  tenant_id       = var.tenant_id
   private         = true
 }
 
@@ -116,8 +119,8 @@ module "sp_public_cli" {
   outbound_type   = "UserDefinedRouting"
   byo_nsg         = true
   miwi            = false
-  subscription_id = local.subscription_id
-  tenant_id       = local.tenant_id
+  subscription_id = var.subscription_id
+  tenant_id       = var.tenant_id
 }
 
 # test 7: sp-private-api
@@ -135,8 +138,8 @@ module "sp_private_api" {
   outbound_type   = "UserDefinedRouting"
   byo_nsg         = false
   miwi            = false
-  subscription_id = local.subscription_id
-  tenant_id       = local.tenant_id
+  subscription_id = var.subscription_id
+  tenant_id       = var.tenant_id
   private         = true
 }
 
@@ -155,6 +158,6 @@ module "sp_public_api" {
   outbound_type   = "Loadbalancer"
   byo_nsg         = true
   miwi            = false
-  subscription_id = local.subscription_id
-  tenant_id       = local.tenant_id
+  subscription_id = var.subscription_id
+  tenant_id       = var.tenant_id
 }

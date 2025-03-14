@@ -1,6 +1,10 @@
-setup:
-	@cd terraform && terraform init -upgrade && terraform apply
+USE_CASE ?= miwi_private_api
 
-CLUSTER_NUMBER ?= 1
+setup:
+	@export USE_CASE=$(USE_CASE) && scripts/setup.sh
+
+setup-destroy:
+	@export USE_CASE=$(USE_CASE) && export ACTION=destroy && scripts/setup.sh
+
 install:
-	@cd scripts/clusters && ./cluster-$(CLUSTER_NUMBER).sh
+	@cd scripts/clusters && ./$(USE_CASE).sh

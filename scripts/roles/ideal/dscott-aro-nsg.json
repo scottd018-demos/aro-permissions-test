@@ -1,5 +1,5 @@
 {
-  "Name": "dscott-aro-nsg",
+  "Name": "dscott-ideal-aro-nsg",
   "IsCustom": true,
   "Description": "Custom role for managing ARO network security groups.",
   "Actions": [

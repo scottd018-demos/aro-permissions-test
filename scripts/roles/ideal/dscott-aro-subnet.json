@@ -1,10 +1,11 @@
 {
-  "Name": "dscott-aro-vnet",
+  "Name": "dscott-ideal-aro-subnet",
   "IsCustom": true,
   "Description": "Custom role for managing ARO subnets",
   "Actions": [
     "Microsoft.Network/virtualNetworks/subnets/join/action",
-    "Microsoft.Network/virtualNetworks/subnets/read"
+    "Microsoft.Network/virtualNetworks/subnets/read",
+    "Microsoft.Network/virtualNetworks/subnets/write"
   ],
   "AssignableScopes": [
     "/subscriptions/fe16a035-e540-4ab7-80d9-373fa9a3d6ae"

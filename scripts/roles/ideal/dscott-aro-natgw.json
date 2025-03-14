@@ -1,5 +1,5 @@
 {
-  "Name": "dscott-aro-natgw",
+  "Name": "dscott-ideal-aro-natgw",
   "IsCustom": true,
   "Description": "Custom role for managing ARO NAT gateways.",
   "Actions": [
